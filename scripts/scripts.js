@@ -147,8 +147,8 @@ async function loadEager(doc) {
     // 1. WebSDK Configuration
     // Docs: https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/commands/configure/overview#configure-js
     {
-      datastreamId: /* your datastream id here */,
-      orgId: /* your IMS org id here */,
+      datastreamId: '19ac2c40-0245-443e-b2ef-1ea3173b1e80',
+      orgId: `09CF60665F98CEF90A495FF8@AdobeOrg`,
       // The `debugEnabled` flag is automatically set to true on localhost and .page URLs.
       // The `defaultConsent` is automatically set to "pending".
       onBeforeEventSend: (payload) => {

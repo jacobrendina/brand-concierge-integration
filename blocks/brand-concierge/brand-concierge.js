@@ -5,7 +5,7 @@ const ALLOY_CONFIG = {
   defaultConsent: 'in',
   edgeDomain: 'edge-int.adobedc.net',
   edgeBasePath: 'ee',
-  datastreamId: 'd3f98ade-d154-4e52-9ebd-4ce607b66c5d',
+  datastreamId: '19ac2c40-0245-443e-b2ef-1ea3173b1e80',
   orgId: '09CF60665F98CEF90A495FF8@AdobeOrg',
   debugEnabled: true,
   idMigrationEnabled: false,

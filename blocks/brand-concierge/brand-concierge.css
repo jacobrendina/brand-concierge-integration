@@ -1,4 +1,8 @@
+.brand-concierge {
+  display: block;
+}
+
 .brand-concierge #brand-concierge-mount {
   width: 100%;
-  height: 600px;
+  min-height: 600px;
 }

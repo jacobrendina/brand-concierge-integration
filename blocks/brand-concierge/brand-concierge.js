@@ -75,6 +75,10 @@ function bootstrapConcierge(selector) {
 export default async function decorate(block) {
   const mount = document.createElement('div');
   mount.id = 'brand-concierge-mount';
+  // Size the mount inline so layout is established before BC measures it.
+  // The block CSS file may not have applied yet (loadBlock races CSS and JS).
+  mount.style.width = '100%';
+  mount.style.minHeight = '600px';
   block.textContent = '';
   block.append(mount);
 

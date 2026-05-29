@@ -8,7 +8,7 @@
 <script nonce="aem" src="/scripts/scripts.js" type="module"></script>
 <link rel="stylesheet" href="/styles/styles.css"/>
 
-<script>
+<script nonce="aem">
   // Initialize alloy namespace - allows calling alloy() before script loads
   !function (n, o) {
       o.forEach(function (o) {
@@ -22,11 +22,11 @@
   (window, ["alloy"]);
 </script>
 
-<script src="https://cdn1.adoberesources.net/alloy/2.30.1-beta.15/alloy.min.js"></script>
+<script nonce="aem" src="https://cdn1.adoberesources.net/alloy/2.30.1-beta.15/alloy.min.js"></script>
 
-<script src="https://experience-stage.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
+<script nonce="aem" src="https://experience-stage.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
 
-<script>
+<script nonce="aem">
   alloy("configure", {
       defaultConsent: "in",
       edgeDomain: "edge-int.adobedc.net",
@@ -54,7 +54,7 @@
   alloy("sendEvent", {});
 </script>
 
-<script>
+<script nonce="aem">
   window.addEventListener("load", function() {
       // Define styling configurations
       window.styleConfiguration = {

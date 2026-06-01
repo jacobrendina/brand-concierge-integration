@@ -58,6 +58,7 @@
 
   /* nav height */
   --nav-height: 72px;
+  --header-height: var(--nav-height);
 
   /* content width */
   --content-width: 1200px;

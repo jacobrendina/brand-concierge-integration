@@ -1,0 +1,78 @@
+.accordion details {
+  border: var(--border);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-hard);
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.accordion details + details {
+  margin-top: 20px;
+}
+
+.accordion details p {
+  margin-bottom: 0.8em;
+}
+
+.accordion details summary {
+  position: relative;
+  padding: 18px 56px 18px 20px;
+  cursor: pointer;
+  list-style: none;
+  overflow: auto;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--heading-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.accordion details[open] summary {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.accordion details summary:focus,
+.accordion details summary:hover {
+  background-color: var(--pop-yellow);
+  color: var(--ink);
+}
+
+.accordion details[open] summary:focus,
+.accordion details[open] summary:hover {
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.accordion details summary::-webkit-details-marker {
+  display: none;
+}
+
+/* plus / minus indicator in a bordered box */
+.accordion details summary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 22px;
+  height: 22px;
+  transform: translateY(-50%);
+  background:
+    linear-gradient(currentcolor, currentcolor) center / 14px 3px no-repeat,
+    linear-gradient(currentcolor, currentcolor) center / 3px 14px no-repeat;
+  transition: transform 0.2s;
+}
+
+.accordion details[open] summary::after {
+  background: linear-gradient(var(--paper), var(--paper)) center / 14px 3px no-repeat;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.accordion details .accordion-item-body {
+  padding: 4px 20px 8px;
+}
+
+.accordion details[open] .accordion-item-body {
+  border-top: var(--border);
+  background-color: var(--paper);
+}

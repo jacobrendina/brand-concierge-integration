@@ -1,0 +1,66 @@
+.tabs .tabs-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
+  margin-bottom: 20px;
+  font-size: var(--body-font-size-s);
+  overflow-x: auto;
+}
+
+.tabs .tabs-list button {
+  flex: 0 0 max-content;
+  margin: 0;
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 0.55em 1.1em;
+  background-color: var(--paper);
+  color: var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--body-font-size-s);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-align: initial;
+  text-overflow: unset;
+  overflow: unset;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s, transform 0.08s, box-shadow 0.08s;
+}
+
+.tabs .tabs-list button p {
+  margin: 0;
+}
+
+.tabs .tabs-list button:hover {
+  background-color: var(--pop-yellow);
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.tabs .tabs-list button[aria-selected='true'] {
+  background-color: var(--ink);
+  color: var(--paper);
+  cursor: initial;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.tabs .tabs-panel {
+  padding: 28px;
+  border: var(--border);
+  box-shadow: var(--shadow-hard);
+  background-color: var(--paper);
+  overflow: auto;
+}
+
+.tabs .tabs-panel > :first-child {
+  margin-top: 0;
+}
+
+.tabs .tabs-panel[aria-hidden='true'] {
+  display: none;
+}

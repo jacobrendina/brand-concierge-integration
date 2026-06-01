@@ -1,0 +1,67 @@
+.table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table table {
+  width: 100%;
+  max-width: 100%;
+  border: var(--border);
+  border-collapse: collapse;
+  box-shadow: var(--shadow-hard);
+  background-color: var(--paper);
+  font-size: var(--body-font-size-s);
+}
+
+/* ink header */
+.table table thead tr {
+  background-color: var(--ink);
+  color: var(--paper);
+  border-bottom: var(--border);
+}
+
+.table table tbody tr {
+  border-bottom: 2px solid var(--ink);
+}
+
+.table table tbody tr:last-child {
+  border-bottom: 0;
+}
+
+.table table th {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.table table th,
+.table table td {
+  padding: 0.7em 0.9em;
+  text-align: left;
+}
+
+.table table th p,
+.table table td p {
+  margin: 0;
+}
+
+.table table td p + p {
+  margin-top: 0.25em;
+}
+
+/* no header variant */
+.table.no-header table tbody tr {
+  border-top: 2px solid var(--ink);
+}
+
+/* striped variant */
+.table.striped tbody tr:nth-child(odd) {
+  background-color: var(--light-color);
+}
+
+/* bordered variant */
+.table.bordered table th,
+.table.bordered table td {
+  border: 2px solid var(--ink);
+}

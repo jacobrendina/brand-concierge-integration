@@ -1,33 +1,61 @@
 .columns > div {
   display: flex;
   flex-direction: column;
+  gap: 28px;
+}
+
+.columns > div + div {
+  margin-top: 56px;
 }
 
 .columns img {
   width: 100%;
+  display: block;
 }
 
 .columns > div > div {
   order: 1;
 }
 
+/* frame images with the bold border + hard shadow */
 .columns > div > .columns-img-col {
   order: 0;
+  line-height: 0;
 }
 
 .columns > div > .columns-img-col img {
+  border: var(--border);
+  box-shadow: var(--shadow-hard);
+}
+
+.columns h2,
+.columns h3 {
+  margin-top: 0;
+}
+
+.columns h3::after {
+  content: "";
   display: block;
+  width: 64px;
+  height: var(--border-width);
+  margin-top: 0.4em;
+  background-color: var(--pop-blue);
 }
 
 @media (width >= 900px) {
   .columns > div {
     align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+    flex-direction: row;
+    gap: 56px;
   }
 
   .columns > div > div {
     flex: 1;
     order: unset;
+  }
+
+  /* alternate the image side on every other row for rhythm */
+  .columns > div:nth-child(even) > .columns-img-col {
+    order: 1;
   }
 }

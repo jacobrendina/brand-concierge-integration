@@ -1,3 +1,5 @@
 export default function decorate(block) {
-  block.setAttribute('id', 'brand-concierge-mount');
+  const mount = document.createElement('div');
+  mount.setAttribute('id', 'brand-concierge-mount');
+  block.append(mount);
 }

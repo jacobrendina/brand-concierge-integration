@@ -4,9 +4,7 @@
 }
 
 .brand-concierge #brand-concierge-mount {
-  width: 100%;
-  max-width: 640px;
-  min-height: 600px;
+  min-height: 300px;
   border: var(--border);
   box-shadow: var(--shadow-hard);
   background-color: var(--paper);

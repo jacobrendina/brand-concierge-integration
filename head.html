@@ -1,54 +1,57 @@
-<meta
-  http-equiv="Content-Security-Policy"
+<meta http-equiv="Content-Security-Policy"
   content="script-src 'nonce-aem' 'strict-dynamic' 'unsafe-inline' http: https:; base-uri 'self'; object-src 'none';"
-  move-to-http-header="true"
->
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+  move-to-http-header="true">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script nonce="aem" src="/scripts/aem.js" type="module"></script>
 <script nonce="aem" src="/scripts/scripts.js" type="module"></script>
-<link rel="stylesheet" href="/styles/styles.css"/>
+<link rel="stylesheet" href="/styles/styles.css" />
 
 <script nonce="aem" src="/scripts/styleconfigurations.js"></script>
 
 <script nonce="aem">
-    !function (n, o) {
-      o.forEach(function (o) {
-        n[o] || ((n.__alloyNS = n.__alloyNS ||
-          []).push(o), n[o] = function () {
-            var u = arguments; return new Promise(
-              function (i, l) { n[o].q.push([i, l, u]) })
-          }, n[o].q = [])
-      })
-    }
-      (window, ["alloy"]);
-    </script>
+  !function (n, o) {
+    o.forEach(function (o) {
+      n[o] || ((n.__alloyNS = n.__alloyNS ||
+        []).push(o), n[o] = function () {
+          var u = arguments; return new Promise(
+            function (i, l) { n[o].q.push([i, l, u]) })
+        }, n[o].q = [])
+    })
+  }
+    (window, ["alloy"]);
+</script>
 
 <script nonce="aem" src="/scripts/alloy.js"></script>
 
 <script nonce="aem">
-    alloy("configure", {
-      defaultConsent: "in",
-      edgeDomain: "edge-int.adobedc.net",
-      edgeBasePath: "ee",
-      datastreamId: "58875a77-1c5d-4d06-9563-41e27e89478d",
-      orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
-      debugEnabled: true,
-      idMigrationEnabled: false,
-      thirdPartyCookiesEnabled: false,
-      prehidingStyle: ".personalization-container { opacity: 0 !important }",
-    });
-
-window["alloy"]("sendEvent", {
+  alloy("configure", {
+    defaultConsent: "in",
+    edgeDomain: "edge.adobedc.net",
+    edgeBasePath: "ee",
+    datastreamId: "58875a77-1c5d-4d06-9563-41e27e89478d",
+    orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
+    debugEnabled: true,
+    idMigrationEnabled: false,
+    thirdPartyCookiesEnabled: false,
+    prehidingStyle: ".personalization-container { opacity: 0 !important }",
     conversation: {
-        fetchConversationalExperience: true
+      region: "aus5"
     }
-}).then(result => {
+  });
+
+  alloy("sendEvent", {});
+
+  window["alloy"]("sendEvent", {
+    conversation: {
+      fetchConversationalExperience: true
+    }
+  }).then(result => {
     console.log("Conversation experience fetched", result);
     window["alloy"]("bootstrapConversationalExperience", {
-        selector: "#brand-concierge-mount",
-        src: "/scripts/brandconciergemain.js",
-        stylingConfigurations: window.styleConfiguration,
-        stickySession: true // create a sticky session cookie with expiration
+      selector: "#brand-concierge-mount",
+      src: "/scripts/brandconciergemain.js",
+      stylingConfigurations: window.styleConfiguration,
+      stickySession: true // create a sticky session cookie with expiration
     })
-});
+  });
 </script>

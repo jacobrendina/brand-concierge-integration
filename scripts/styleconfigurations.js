@@ -1,6 +1,6 @@
 window.styleConfiguration = {
   "metadata": {
-    "brandName": "Sock2U",
+    "brandName": "",
     "version": "1.0.0",
     "language": "en-US",
     "namespace": "brand-concierge"
@@ -23,7 +23,7 @@ window.styleConfiguration = {
     },
     "privacyNotice": {
       "title": "Privacy Notice",
-      "text": "Your use of this automated chatbot constitutes your consent that the personal information you provide in the chat session \n      can be collected, used, disclosed, and retained by Brand Concierge x Commerce x EDS Demo and service providers acting on Brand Concierge x Commerce x EDS Demo's behalf \n      in accordance with the Brand Concierge x Commerce x EDS Demo {Privacy Policy}. Please do not provide sensitive personal information \n      (such as financial or health information) in the chatbot.",
+      "text": "Your use of this automated chatbot constitutes your consent that the personal information you provide in the chat session \n      can be collected, used, disclosed, and retained by Sock2U Assistant and service providers acting on Sock2U Assistant's behalf \n      in accordance with the Sock2U Assistant {Privacy Policy}. Please do not provide sensitive personal information \n      (such as financial or health information) in the chatbot.",
       "links": [
         {
           "text": "Privacy Policy",
@@ -115,9 +115,9 @@ window.styleConfiguration = {
     ]
   },
   "text": {
-    "welcome.heading": "Here to help with your sock-designing needs",
-    "welcome.subheading": "Tell us what you're after",
-    "input.placeholder": "How can I help?",
+    "welcome.heading": "What brings you here today?",
+    "welcome.subheading": "Tell us what interests you and we'll point you in the right direction.",
+    "input.placeholder": "How can I help",
     "input.messageInput.aria": "Message input",
     "input.send.aria": "Send message",
     "input.aiChatIcon.tooltip": "Ask AI",
@@ -141,23 +141,7 @@ window.styleConfiguration = {
     "feedback.thumbsDown.aria": "Thumbs down"
   },
   "arrays": {
-    "welcome.examples": [
-      {
-        "text": "How do the sock material options compare?",
-        "image": "https://images.unsplash.com/photo-1640025867572-f6b3a8410c81?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "backgroundColor": "#FFFFFF"
-      },
-      {
-        "text": "What are the 5 steps of the sock-design process?",
-        "image": "https://images.unsplash.com/photo-1640025867572-f6b3a8410c81?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "backgroundColor": "#FFFFFF"
-      },
-      {
-        "text": "What sock customisation packages are there?",
-        "image": "https://images.unsplash.com/photo-1640025867572-f6b3a8410c81?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "backgroundColor": "#FFFFFF"
-      }
-    ],
+    "welcome.examples": [],
     "feedback.positive.options": [
       "Helpful and relevant recommendations",
       "Clear and easy to understand",
@@ -179,6 +163,8 @@ window.styleConfiguration = {
     }
   },
   "theme": {
+    "--welcome-input-order": "3",
+    "--welcome-cards-order": "2",
     "--welcome-heading-size-desktop": "28px",
     "--welcome-heading-size-mobile": "28px",
     "--welcome-heading-weight": "700",
@@ -187,29 +173,27 @@ window.styleConfiguration = {
     "--welcome-subheading-size-mobile": "16px",
     "--welcome-subheading-text-align": "center",
     "--welcome-padding": "24px",
-    "--prompt-suggestion-background": "#FFF",
-    "--prompt-suggestion-background-hover": "#F8F8F8",
+    "--prompt-suggestion-background": "#F8F8F8",
+    "--prompt-suggestion-background-hover": "#E1E1E1",
     "--prompt-suggestion-text-color": "#000000",
     "--prompt-suggestion-border-color": "#F8F8F8",
-    "--welcome-input-order": "3",
-    "--welcome-cards-order": "2",
-    "--font-family": "sans-serif",
-    "--color-primary": "#2F5CFF",
-    "--color-text": "#0B0B0B",
+    "--font-family": "'Adobe Clean', adobe-clean, 'Trebuchet MS', sans-serif",
+    "--color-primary": "#007bff",
+    "--color-text": "#131313",
     "--line-height-body": "1.75",
-    "--main-container-background": "#F8F8F8",
+    "--main-container-background": "#edffcc",
     "--input-height": "52px",
     "--input-height-mobile": "52px",
-    "--input-border-radius": "0px",
-    "--input-border-radius-mobile": "0px",
-    "--input-background": "FFFFFF",
-    "--input-outline-color": "#000000",
-    "--input-outline-width": "10px",
-    "--input-box-shadow": "0 8px 16px 0 #00000029",
-    "--input-focus-outline-width": "10px",
+    "--input-border-radius": "16px",
+    "--input-border-radius-mobile": "16px",
+    "--input-background": "#FFFFFF",
+    "--input-outline-color": "#FFFFFF",
+    "--input-outline-width": "2px",
+    "--input-box-shadow": "0 4px 16px 0 #00000029",
+    "--input-focus-outline-width": "2px",
     "--input-focus-outline-color": "#4B75FF",
     "--input-font-size": "16px",
-    "--input-font-weight": "600",
+    "--input-font-weight": "400",
     "--input-text-color": "#000000",
     "--input-button-height": "32px",
     "--input-button-width": "32px",
@@ -222,13 +206,13 @@ window.styleConfiguration = {
     "--disclaimer-color": "#000000",
     "--disclaimer-font-size": "16px",
     "--disclaimer-font-weight": "700",
-    "--message-user-background": "#f3f1ea",
+    "--message-user-background": "#EBEEFF",
     "--message-user-text": "#000000",
     "--message-border-radius": "10px",
     "--message-padding": "8px 16px",
-    "--message-concierge-background": "#f3f1ea",
+    "--message-concierge-background": "#FFFFFF",
     "--message-concierge-text": "#000000",
-    "--message-max-width": "90%",
+    "--message-max-width": "100%",
     "--chat-interface-max-width": "768px",
     "--message-blocker-height": "105px",
     "--citations-text-font-weight": "700",
@@ -253,26 +237,26 @@ window.styleConfiguration = {
     "--privacy-notice-title-font-size": "12px",
     "--message-concierge-link-decoration": "underline",
     "--input-icon-color": "#000000",
-    "--icon-size-small": "24px",
+    "--icon-size-small": "20px",
     "--welcome-heading-text-color": "#131313",
     "--welcome-subheading-text-color": "#131313",
     "--prompt-suggestion-button-background": "#F8F8F8",
     "--prompt-suggestion-button-background-hover": "#E1E1E1",
     "--prompt-suggestion-button-text-color": "#000000",
-    "--card-border-radius": "0px",
-    "--card-text-background": "#f3f1ea",
-    "--card-text-border-radius": "0px",
+    "--card-border-radius": "8px",
+    "--card-text-background": "#FFFFFF",
+    "--card-text-border-radius": "8px",
     "--card-text-color": "#000000",
     "--card-text-font-size": "14px",
     "--card-text-padding": "8px 10px",
-    "--prompt-pill-background": "#ffd400",
+    "--prompt-pill-background": "#F8F8F8",
     "--prompt-pill-border-color": "#E1E1E1",
-    "--border-radius-pill": "0px",
+    "--border-radius-pill": "20px",
     "--prompt-pill-text-color": "#000000",
     "--prompt-pill-button-text-padding": "8px 16px",
     "--chat-container-background": "#FFFFFF",
-    "--chat-container-bottom-background": "#FFF",
-    "--main-container-bottom-background": "#ffd400",
+    "--chat-container-bottom-background": "#FFFFFF",
+    "--main-container-bottom-background": "#FFFFFF",
     "--message-blocker-background": "#FFFFFF"
   }
-};
+}

@@ -26,27 +26,54 @@
 <script nonce="aem">
   alloy("configure", {
     defaultConsent: "in",
-    edgeDomain: "edge.adobedc.net",
+    edgeDomain: "edge-int.adobedc.net",
     edgeBasePath: "ee",
-    datastreamId: "bfb0dbed-d494-4315-aed7-a96389c3fc8c", // replace datastreamId
-    orgId: "09CF60665F98CEF90A495FF8@AdobeOrg", // replace ims org Id
+    datastreamId: "bfb0dbed-d494-4315-aed7-a96389c3fc8c",
+    orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
     debugEnabled: true,
     idMigrationEnabled: false,
     thirdPartyCookiesEnabled: false,
     prehidingStyle: ".personalization-container { opacity: 0 !important }",
   });
 
-  window["alloy"]("sendEvent", {
-    conversation: {
-      fetchConversationalExperience: true
-    }
-  }).then(result => {
-    console.log("Conversation experience fetched", result);
-    window["alloy"]("bootstrapConversationalExperience", {
-      selector: "#brand-concierge-mount",
-      src: "/scripts/brandconciergemain.js",
-      stylingConfigurations: window.styleConfiguration,
-      stickySession: true // create a sticky session cookie with expiration
-    })
+  alloy("sendEvent", {});
+
+  // window["alloy"]("sendEvent", {
+  //   conversation: {
+  //     fetchConversationalExperience: true
+  //   }
+  // }).then(result => {
+  //   console.log("Conversation experience fetched", result);
+  //   window["alloy"]("bootstrapConversationalExperience", {
+  //     selector: "#brand-concierge-mount",
+  //     src: "/scripts/brandconciergemain.js",
+  //     stylingConfigurations: window.styleConfiguration,
+  //     stickySession: true // create a sticky session cookie with expiration
+  //   })
+  // });
+</script>
+
+<script>
+  alloy("configure", {
+    defaultConsent: "in",
+    edgeDomain: "edge-int.adobedc.net",
+    edgeBasePath: "ee",
+    datastreamId: "bfb0dbed-d494-4315-aed7-a96389c3fc8c",
+    orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
+    debugEnabled: true,
+    idMigrationEnabled: false,
+    thirdPartyCookiesEnabled: false,
+    prehidingStyle: ".personalization-container { opacity: 0 !important }",
+  });
+
+  alloy("sendEvent", {});
+</script>
+
+<script>
+  window.adobe.concierge.bootstrap({
+    instanceName: "alloy",
+    stylingConfigurations: window.styleConfiguration,
+    selector: "#brand-concierge-mount",
+    stickySession: false
   });
 </script>

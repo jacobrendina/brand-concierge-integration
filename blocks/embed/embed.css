@@ -1,0 +1,80 @@
+.embed {
+  width: unset;
+  text-align: center;
+  max-width: 900px;
+  margin: 32px auto;
+  border: var(--border);
+  box-shadow: var(--shadow-hard);
+  background-color: var(--ink);
+}
+
+.embed > div {
+  display: flex;
+  justify-content: center;
+}
+
+.embed.embed-twitter {
+  background-color: var(--paper);
+  padding: 16px;
+}
+
+.embed.embed-twitter .twitter-tweet-rendered {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.embed .embed-placeholder {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  cursor: pointer;
+}
+
+.embed .embed-placeholder > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+}
+
+.embed .embed-placeholder picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.embed .embed-placeholder-play button {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 72px;
+  height: 72px;
+  border: var(--border);
+  border-radius: 0;
+  padding: 0;
+  background-color: var(--pop-yellow);
+  box-shadow: 4px 4px 0 var(--ink);
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.15s;
+}
+
+.embed .embed-placeholder-play button:hover {
+  background-color: var(--pop-pink);
+  transform: translate(-2px, -2px);
+}
+
+.embed .embed-placeholder-play button::before {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 0;
+  height: 24px;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 20px solid var(--ink);
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+}

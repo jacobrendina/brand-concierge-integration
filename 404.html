@@ -48,7 +48,22 @@
     }
 
     main.error .error-number text {
-      font-family: monospace;
+      font-family: var(--heading-font-family, sans-serif);
+      font-weight: 700;
+      fill: var(--ink, #0b0b0b);
+    }
+
+    main.error .error-message {
+      text-transform: uppercase;
+    }
+
+    main.error .error-message::after {
+      content: "";
+      display: block;
+      width: 88px;
+      height: 3px;
+      margin: 0.4em 0;
+      background-color: var(--pop-pink, #ff4d6d);
     }
   </style>
   <link rel="stylesheet" href="/styles/lazy-styles.css">

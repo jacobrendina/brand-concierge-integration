@@ -3,21 +3,28 @@
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(257px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
 }
 
 .cards > ul > li {
-  border: 1px solid #dadada;
-  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  border: var(--border);
+  background-color: var(--paper);
+  box-shadow: var(--shadow-hard);
+  overflow: hidden;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-.cards .cards-card-body {
-  margin: 16px;
+.cards > ul > li:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: calc(var(--shadow-offset) + 3px) calc(var(--shadow-offset) + 3px) 0 var(--ink);
 }
 
 .cards .cards-card-image {
   line-height: 0;
+  border-bottom: var(--border);
 }
 
 .cards > ul > li img {
@@ -25,3 +32,45 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+.cards .cards-card-body {
+  margin: 0;
+  padding: 22px 22px 26px;
+  flex: 1;
+  color: var(--ink);
+}
+
+/* the bold lead line of each card becomes a coloured tag */
+.cards .cards-card-body > p:first-child {
+  margin: 0 0 12px;
+}
+
+.cards .cards-card-body > p:first-child strong {
+  display: inline-block;
+  padding: 6px 12px;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--heading-font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  border: var(--border);
+  color: var(--ink);
+}
+
+.cards .cards-card-body > p:not(:first-child) {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* rotating colour pops across the grid */
+.cards > ul > li:nth-child(4n + 1) .cards-card-body > p:first-child strong { background-color: var(--pop-yellow); }
+.cards > ul > li:nth-child(4n + 2) .cards-card-body > p:first-child strong { background-color: var(--pop-pink); }
+
+.cards > ul > li:nth-child(4n + 3) .cards-card-body > p:first-child strong {
+  background-color: var(--pop-blue);
+  color: var(--paper);
+}
+
+.cards > ul > li:nth-child(4n + 4) .cards-card-body > p:first-child strong { background-color: var(--pop-lime); }

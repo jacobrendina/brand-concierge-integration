@@ -7,8 +7,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 1040px;
+  width: 10000px;
   border: var(--border);
   box-shadow: var(--shadow-hard);
   background-color: var(--paper);
@@ -56,9 +55,7 @@
 .brand-concierge .brand-concierge-frame {
   position: relative;
   width: 100%;
-  height: 90vh;
-  min-height: 500px;
-  max-height: 1000px;
+  height: 850px;
   overflow: hidden;
 }
 
@@ -66,10 +63,4 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
-
-@media (width >= 900px) {
-  .brand-concierge .brand-concierge-frame {
-    height: 820px;
-  }
 }

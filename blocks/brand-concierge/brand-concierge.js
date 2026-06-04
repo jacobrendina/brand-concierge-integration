@@ -25,5 +25,7 @@ export default function decorate(block) {
   panel.append(bar, frame);
   block.append(panel);
 
-  mountBrandConcierge(frame);
+  // Embedded inline, let the agent fill the full content width rather than the
+  // default centred 768px chat column.
+  mountBrandConcierge(frame, { '--chat-interface-max-width': '100%' });
 }

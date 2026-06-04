@@ -1,0 +1,234 @@
+/* ---------- callout ---------- */
+.agent-invocation .agent-invocation-callout {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 28px;
+  border: var(--border);
+  box-shadow: var(--shadow-hard);
+  background-color: var(--pop-yellow);
+  background-image: radial-gradient(rgb(11 11 11 / 12%) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+.agent-invocation .agent-invocation-eyebrow {
+  display: inline-block;
+  padding: 3px 10px;
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agent-invocation .agent-invocation-heading {
+  margin: 12px 0 0;
+  max-width: 22ch;
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--heading-font-size-l);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+@media (width >= 900px) {
+  .agent-invocation .agent-invocation-callout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 36px;
+  }
+
+  .agent-invocation .agent-invocation-cta {
+    flex-shrink: 0;
+  }
+}
+
+/* ---------- modal ---------- */
+body.agent-invocation-open {
+  overflow: hidden;
+}
+
+.agent-invocation-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgb(11 11 11 / 80%);
+}
+
+.agent-invocation-overlay[hidden] {
+  display: none;
+}
+
+.agent-invocation-modal {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1040px;
+  height: 100%;
+  max-height: 860px;
+  border: var(--border);
+  border-top: 8px solid var(--pop-yellow);
+  box-shadow: 10px 10px 0 rgb(11 11 11 / 35%);
+  background-color: var(--paper);
+  overflow: hidden;
+}
+
+.agent-invocation-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  padding: 12px 16px;
+  border-bottom: var(--border);
+  background-color: var(--ink);
+  color: var(--paper);
+}
+
+.agent-invocation-modal-dot {
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--paper);
+  background-color: var(--pop-lime);
+}
+
+.agent-invocation-modal-title {
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--body-font-size-s);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.agent-invocation-modal-controls {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.agent-invocation-icon-btn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--paper);
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--paper);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.agent-invocation-icon-btn:hover {
+  background-color: var(--pop-yellow);
+  color: var(--ink);
+}
+
+.agent-invocation-icon-btn:last-child:hover {
+  background-color: var(--pop-pink);
+}
+
+.agent-invocation-min-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 3px;
+  transform: translate(-50%, 6px);
+  background-color: currentcolor;
+}
+
+.agent-invocation-close-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 3px;
+  background-color: currentcolor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.agent-invocation-close-icon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: currentcolor;
+  transform: rotate(-90deg);
+}
+
+.agent-invocation-modal-body {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.agent-invocation-modal-body #brand-concierge-mount {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ---------- minimised restore pill ---------- */
+.agent-invocation-restore {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 18px;
+  border: var(--border);
+  border-radius: 0;
+  box-shadow: var(--shadow-hard);
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--heading-font-family);
+  font-weight: 700;
+  font-size: var(--body-font-size-xs);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.agent-invocation-restore[hidden] {
+  display: none;
+}
+
+.agent-invocation-restore:hover,
+.agent-invocation-restore:focus-visible {
+  outline: none;
+  background-color: var(--pop-yellow);
+  color: var(--ink);
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--ink);
+}
+
+.agent-invocation-restore-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid currentcolor;
+  background-color: var(--pop-lime);
+}
+
+@media (width >= 900px) {
+  .agent-invocation-overlay {
+    padding: 48px;
+  }
+}

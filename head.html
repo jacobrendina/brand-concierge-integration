@@ -11,88 +11,49 @@
 <script nonce="aem">
   !function (n, o) {
     o.forEach(function (o) {
-      n[o] || ((n.__alloyNS = n.__alloyNS || []).push(o), n[o] = function () {
-        var u = arguments;
-        return new Promise(function (i, l) { n[o].q.push([i, l, u]) });
-      }, n[o].q = []);
-    });
-  }(window, ["alloy"]);
+      n[o] || ((n.__alloyNS = n.__alloyNS ||
+        []).push(o), n[o] = function () {
+          var u = arguments; return new Promise(
+            function (i, l) { n[o].q.push([i, l, u]) })
+        }, n[o].q = [])
+    })
+  }
+  (window, ["alloy"]);
 </script>
 
-<script nonce="aem" src="/scripts/alloy.js"></script>
+<style>
+  .bc-card__image {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+  }
+</style>
+
+<script nonce="aem" src="https://cdn1.adoberesources.net/alloy/2.32.0/alloy.min.js"></script>
+<script nonce="aem" src="https://experience-stage.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
 
 <script nonce="aem">
   alloy("configure", {
     defaultConsent: "in",
-    edgeDomain: "edge.adobedc.net",
+    edgeDomain: "edge-int.adobedc.net",
     edgeBasePath: "ee",
     datastreamId: "bfb0dbed-d494-4315-aed7-a96389c3fc8c",
     orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
     debugEnabled: true,
     idMigrationEnabled: false,
-    thirdPartyCookiesEnabled: false
+    thirdPartyCookiesEnabled: false,
+    prehidingStyle: ".personalization-container { opacity: 0 !important }",
   });
 
-  function whenMountReady(callback) {
-    const existing = document.querySelector("#brand-concierge-mount");
-    if (existing) {
-      callback(existing);
-      return;
-    }
+  alloy("sendEvent", {});
+</script>
 
-    const observer = new MutationObserver(function () {
-      const mount = document.querySelector("#brand-concierge-mount");
-      if (mount) {
-        observer.disconnect();
-        callback(mount);
-      }
+<!-- Add this div where you want the agent to appear -->
+<div id="brand-concierge-mount"></div>
+<script nonce="aem">
+    window.adobe.concierge.bootstrap({
+      instanceName: "alloy",
+      stylingConfigurations: window.styleConfiguration,
+      selector: "#brand-concierge-mount",
+      stickySession: false
     });
-
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-  }
-
-  whenMountReady(function () {
-    if (!window.styleConfiguration) {
-      console.error("[BC] Missing window.styleConfiguration");
-      return;
-    }
-
-    alloy("sendEvent", {})
-      .then(() => {
-        const existing = document.querySelector('script[src="/scripts/brandconciergemain.js"]');
-        if (existing) {
-          if (window.adobe?.concierge?.bootstrap) {
-            window.adobe.concierge.bootstrap({
-              instanceName: "alloy",
-              stylingConfigurations: window.styleConfiguration,
-              selector: "#brand-concierge-mount"
-            });
-          }
-          return;
-        }
-
-        const s = document.createElement("script");
-        s.src = "/scripts/brandconciergemain.js";
-        s.onload = function () {
-          if (!window.adobe?.concierge?.bootstrap) {
-            console.error("[BC] Web client loaded but bootstrap API missing");
-            return;
-          }
-
-          window.adobe.concierge.bootstrap({
-            instanceName: "alloy",
-            stylingConfigurations: window.styleConfiguration,
-            selector: "#brand-concierge-mount"
-          });
-        };
-        s.onerror = function () {
-          console.error("[BC] Failed to load /scripts/brandconciergemain.js");
-        };
-
-        document.head.appendChild(s);
-      })
-      .catch((err) => {
-        console.error("[BC] Alloy init failed", err);
-      });
-  });
 </script>

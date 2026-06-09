@@ -58,6 +58,7 @@ export default async function mountBrandConcierge(container) {
   const ready = await whenConciergeReady();
   if (ready && !bootstrapped) {
     bootstrapped = true;
+    alloy("sendEvent", {});
     window.adobe.concierge.bootstrap({
       instanceName: 'alloy',
       stylingConfigurations: window.styleConfiguration,

@@ -13,13 +13,13 @@ import {
   getMetadata
 } from './aem.js';
 
-import {
-  initMartech,
-  updateUserConsent,
-  martechEager,
-  martechLazy,
-  martechDelayed,
-} from '../plugins/martech/src/index.js';
+// import {
+//   initMartech,
+//   updateUserConsent,
+//   martechEager,
+//   martechLazy,
+//   martechDelayed,
+// } from '../plugins/martech/src/index.js';
 
 /**
  * Builds hero block and prepends to main in a new section.
@@ -142,34 +142,34 @@ export function decorateMain(main) {
 async function loadEager(doc) {
 
   // Hook in your consent check to determine if personalization can run.
-  const isConsentGiven = true; /* your consent logic here */
+  // const isConsentGiven = true; /* your consent logic here */
 
-  const martechLoadedPromise = initMartech(
-    // 1. WebSDK Configuration
-    // Docs: https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/commands/configure/overview#configure-js
-    {
-      datastreamId: '19ac2c40-0245-443e-b2ef-1ea3173b1e80',
-      orgId: `09CF60665F98CEF90A495FF8@AdobeOrg`,
-      // The `debugEnabled` flag is automatically set to true on localhost and .page URLs.
-      // The `defaultConsent` is automatically set to "pending".
-      onBeforeEventSend: (payload) => {
-        // This callback allows you to modify the payload before it's sent.
-        // Return false to prevent the event from being sent.
-      },
-      edgeConfigOverrides: {
-        // Optional datastream overrides for different environments.
-      },
-    },
-    // 2. Library Configuration
-    {
-      personalization: !!getMetadata('target') && isConsentGiven,
-      launchUrls: [/* your Launch script URLs here */],
-      // To request additional decision scopes beyond the default `__view__` scope,
-      // list them here. They are added to the eager personalization fetch.
-      // decisionScopes: ['my-scope-name'],
-      // See the API Reference for all available options.
-    },
-  );
+  // const martechLoadedPromise = initMartech(
+  //   // 1. WebSDK Configuration
+  //   // Docs: https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/commands/configure/overview#configure-js
+  //   {
+  //     datastreamId: '19ac2c40-0245-443e-b2ef-1ea3173b1e80',
+  //     orgId: `09CF60665F98CEF90A495FF8@AdobeOrg`,
+  //     // The `debugEnabled` flag is automatically set to true on localhost and .page URLs.
+  //     // The `defaultConsent` is automatically set to "pending".
+  //     onBeforeEventSend: (payload) => {
+  //       // This callback allows you to modify the payload before it's sent.
+  //       // Return false to prevent the event from being sent.
+  //     },
+  //     edgeConfigOverrides: {
+  //       // Optional datastream overrides for different environments.
+  //     },
+  //   },
+  //   // 2. Library Configuration
+  //   {
+  //     personalization: !!getMetadata('target') && isConsentGiven,
+  //     launchUrls: [/* your Launch script URLs here */],
+  //     // To request additional decision scopes beyond the default `__view__` scope,
+  //     // list them here. They are added to the eager personalization fetch.
+  //     // decisionScopes: ['my-scope-name'],
+  //     // See the API Reference for all available options.
+  //   },
+  // );
 
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
@@ -179,7 +179,7 @@ async function loadEager(doc) {
     document.body.classList.add('appear');
 
     await Promise.all([
-      martechLoadedPromise.then(martechEager),
+      // martechLoadedPromise.then(martechEager),
       loadSection(main.querySelector('.section'), waitForFirstImage),
     ]);
 
@@ -211,7 +211,7 @@ async function loadLazy(doc) {
   if (hash && element) element.scrollIntoView();
 
   loadFooter(doc.querySelector('footer'));
-  await martechLazy();
+  // await martechLazy();
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
@@ -224,7 +224,7 @@ async function loadLazy(doc) {
 function loadDelayed() {
   // eslint-disable-next-line import/no-cycle
   window.setTimeout(() => {
-    martechDelayed();
+    // martechDelayed();
     import('./delayed.js');
   }, 3000);
   // load anything that can be postponed to the latest here

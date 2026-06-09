@@ -8,7 +8,6 @@
 
 <script nonce="aem" src="/scripts/styleconfigurations.js"></script>
 
-<script nonce="aem"src="styleConfigurations.js"></script>
 <script nonce="aem">
   !function (n, o) {
     o.forEach(function (o) {
@@ -23,7 +22,8 @@
 </script>
 
 <script nonce="aem" src="https://cdn1.adoberesources.net/alloy/2.32.0/alloy.min.js"></script>
-<script nonce="aem" src="https://experience-stage.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
+<script nonce="aem"
+  src="https://experience-stage.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
 
 <script nonce="aem">
   alloy("configure", {
@@ -39,4 +39,20 @@
   });
 
   alloy("sendEvent", {});
+</script>
+
+
+<script nonce="aem">
+  (function waitForBrandConciergeMount() {
+    if (document.getElementById('brand-concierge-mount')) {
+      window.adobe.concierge.bootstrap({
+        instanceName: "alloy",
+        stylingConfigurations: window.styleConfiguration,
+        selector: "#brand-concierge-mount",
+        stickySession: false
+      });
+    } else {
+      setTimeout(waitForBrandConciergeMount, 50);
+    }
+  })();
 </script>

@@ -55,20 +55,20 @@ export default async function mountBrandConcierge(container) {
   mountEl.id = MOUNT_ID;
   container.append(mountEl);
 
-  const ready = await whenConciergeReady();
-  if (ready && !bootstrapped) {
-    bootstrapped = true;
-    window.adobe.concierge.bootstrap({
-      instanceName: 'alloy',
-      stylingConfigurations: window.styleConfiguration,
-      selector: `#${MOUNT_ID}`,
-      stickySession: false,
-    });
-    alloy("sendEvent", {});
-  } else if (!ready) {
-    // eslint-disable-next-line no-console
-    console.error('Brand Concierge runtime did not load in time.');
-  }
+  // const ready = await whenConciergeReady();
+  // if (ready && !bootstrapped) {
+  //   bootstrapped = true;
+  //   window.adobe.concierge.bootstrap({
+  //     instanceName: 'alloy',
+  //     stylingConfigurations: window.styleConfiguration,
+  //     selector: `#${MOUNT_ID}`,
+  //     stickySession: false,
+  //   });
+  //   alloy("sendEvent", {});
+  // } else if (!ready) {
+  //   // eslint-disable-next-line no-console
+  //   console.error('Brand Concierge runtime did not load in time.');
+  // }
 
   return mountEl;
 }

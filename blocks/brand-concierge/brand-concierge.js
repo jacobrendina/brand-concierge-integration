@@ -7,10 +7,6 @@ import { loadCSS } from '../../scripts/aem.js';
  */
 export default function decorate(block) {
   block.id = 'brand-concierge-mount';
-
-  // keep EDS site styles out of the agent UI
-  loadCSS(`${window.hlx.codeBasePath}/styles/brand-concierge-reset.css`);
-
   window.adobe.concierge.bootstrap({
     instanceName: 'alloy',
     stylingConfigurations: window.styleConfiguration,

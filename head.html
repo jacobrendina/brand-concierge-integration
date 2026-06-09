@@ -18,16 +18,15 @@
         }, n[o].q = [])
     })
   }
-  (window, ["alloy"]);
+    (window, ["alloy"]);
 </script>
 
-<script nonce="aem" src="https://cdn1.adoberesources.net/alloy/2.32.0/alloy.min.js"></script>
-<script nonce="aem" src="https://experience-stage.adobe.net/solutions/experience-platform-brand-concierge-web-agent/static-assets/main.js"></script>
+<script nonce="aem" src="/scripts/alloy.js"></script>
 
 <script nonce="aem">
   alloy("configure", {
     defaultConsent: "in",
-    edgeDomain: "edge-int.adobedc.net",
+    edgeDomain: "edge.adobedc.net",
     edgeBasePath: "ee",
     datastreamId: "bfb0dbed-d494-4315-aed7-a96389c3fc8c",
     orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
@@ -36,5 +35,18 @@
     thirdPartyCookiesEnabled: false,
     prehidingStyle: ".personalization-container { opacity: 0 !important }",
   });
-  alloy("sendEvent", {});
+
+  window["alloy"]("sendEvent", {
+    conversation: {
+      fetchConversationalExperience: true
+    }
+  }).then(result => {
+    console.log("Conversation experience fetched", result);
+    window["alloy"]("bootstrapConversationalExperience", {
+      selector: "#brand-concierge-mount",
+      src: "/scripts/brandconciergemain.js",
+      stylingConfigurations: window.styleConfiguration,
+      stickySession: true // create a sticky session cookie with expiration
+    })
+  });
 </script>

@@ -1,0 +1,277 @@
+/*
+ * Brand Concierge theme overrides.
+ *
+ * Brand Concierge renders into #brand-concierge-mount in light DOM. This file
+ * re-skins that UI to match the site's bold, neo-brutalist look — thick ink
+ * borders, hard offset shadows, square corners, condensed uppercase headings
+ * and pop-colour accents — with a few playful touches (tilted cards, tactile
+ * "press" buttons, a pop-in on new messages). Everything is scoped to
+ * #brand-concierge-mount so it never leaks into the rest of the page.
+ *
+ * Selectors lead with the #brand-concierge-mount id so they reliably win over
+ * Brand Concierge's own single-class styles without leaning on !important
+ * (used only where the agent sets inline styles).
+ */
+
+/* These target Brand Concierge's own BEM/camelCase classes, which we cannot rename. */
+/* stylelint-disable selector-class-pattern */
+
+#brand-concierge-mount {
+  --bc-border: var(--border-width, 3px) solid var(--ink, #0b0b0b);
+  --bc-border-thin: 2px solid var(--ink, #0b0b0b);
+  --bc-shadow: 4px 4px 0 var(--ink, #0b0b0b);
+  --bc-shadow-sm: 3px 3px 0 var(--ink, #0b0b0b);
+  --bc-press: transform 0.08s ease, box-shadow 0.08s ease, background-color 0.15s ease, color 0.15s ease;
+
+  font-family: var(--body-font-family, sans-serif);
+  color: var(--ink, #0b0b0b);
+}
+
+#brand-concierge-mount ::selection {
+  background-color: var(--pop-yellow, #ffd400);
+  color: var(--ink, #0b0b0b);
+}
+
+/* ---------- canvas: paper + signature dotted texture ---------- */
+#brand-concierge-mount .chat-interface {
+  background-color: var(--paper, #fff);
+  background-image: radial-gradient(var(--light-color, #f3f1ea) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}
+
+/* ---------- welcome heading with the site's yellow marker bar ---------- */
+#brand-concierge-mount .example-heading {
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--ink, #0b0b0b);
+}
+
+#brand-concierge-mount .example-heading::before {
+  content: "";
+  display: block;
+  width: 64px;
+  height: var(--border-width, 3px);
+  margin: 0 auto 0.45em;
+  background-color: var(--pop-yellow, #ffd400);
+}
+
+/* ---------- welcome cards: bordered, tilted, tactile ---------- */
+#brand-concierge-mount .bc-card {
+  border: var(--bc-border);
+  border-radius: 0;
+  box-shadow: var(--bc-shadow);
+  background-color: var(--paper, #fff);
+  transition: var(--bc-press);
+}
+
+#brand-concierge-mount .bc-card:nth-child(odd) {
+  transform: rotate(-1.2deg);
+}
+
+#brand-concierge-mount .bc-card:nth-child(even) {
+  transform: rotate(1.2deg);
+}
+
+#brand-concierge-mount .bc-card:hover,
+#brand-concierge-mount .bc-card:focus-visible {
+  transform: rotate(0) translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink, #0b0b0b);
+  background-color: var(--pop-lime, #b6ff2e);
+  outline: none;
+}
+
+#brand-concierge-mount .bc-card__text {
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink, #0b0b0b);
+}
+
+/* ---------- carousel arrows ---------- */
+#brand-concierge-mount .bc-card-carousel__navigation-arrow {
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  background-color: var(--paper, #fff);
+  color: var(--ink, #0b0b0b);
+  transition: var(--bc-press);
+}
+
+#brand-concierge-mount .bc-card-carousel__navigation-arrow:disabled {
+  border-color: var(--muted-color, #6b6b6b);
+  color: var(--muted-color, #6b6b6b);
+  opacity: 1;
+}
+
+#brand-concierge-mount .bc-card-carousel__navigation-arrow:not(:disabled):hover {
+  background-color: var(--pop-yellow, #ffd400);
+}
+
+/* ---------- prompt pills ---------- */
+#brand-concierge-mount .bc-prompt-pill-button {
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  box-shadow: var(--bc-shadow-sm);
+  background-color: var(--pop-yellow, #ffd400);
+  color: var(--ink, #0b0b0b);
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: var(--bc-press);
+}
+
+#brand-concierge-mount .bc-prompt-pill-button:hover,
+#brand-concierge-mount .bc-prompt-pill-button:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink, #0b0b0b);
+  background-color: var(--pop-lime, #b6ff2e);
+  outline: none;
+}
+
+#brand-concierge-mount .bc-prompt-pill-button__icon svg path {
+  fill: var(--ink, #0b0b0b);
+}
+
+/* ---------- chat messages ---------- */
+#brand-concierge-mount .chat-message.user-message .message-content {
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  box-shadow: var(--bc-shadow-sm);
+  color: var(--ink, #0b0b0b);
+}
+
+#brand-concierge-mount .chat-message.concierge-message .message-content {
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  box-shadow: var(--bc-shadow-sm);
+  background-color: var(--paper, #fff);
+}
+
+#brand-concierge-mount .message-text a {
+  color: var(--link-color, #2f5cff);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: var(--pop-yellow, #ffd400);
+  text-underline-offset: 3px;
+}
+
+#brand-concierge-mount .message-text a:hover {
+  text-decoration-color: currentcolor;
+}
+
+/* ---------- privacy notice: bordered note with a blue spine ---------- */
+#brand-concierge-mount .privacy-notice-content {
+  border: var(--bc-border-thin);
+  border-left: 6px solid var(--pop-blue, #2f5cff);
+  border-radius: 0;
+  background-color: var(--light-color, #f3f1ea);
+}
+
+#brand-concierge-mount .privacy-notice-title {
+  font-family: var(--heading-font-family, sans-serif);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink, #0b0b0b);
+}
+
+/* ---------- feedback (thumbs) ---------- */
+#brand-concierge-mount .bc-feedback-buttons {
+  gap: 6px;
+}
+
+#brand-concierge-mount .feedback-button {
+  width: 28px;
+  height: 28px;
+  padding: 4px !important;
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  background-color: var(--paper, #fff);
+  color: var(--ink, #0b0b0b);
+  transition: var(--bc-press);
+}
+
+#brand-concierge-mount .feedback-button--thumbsUp:hover {
+  background-color: var(--pop-lime, #b6ff2e);
+}
+
+#brand-concierge-mount .feedback-button--thumbsDown:hover {
+  background-color: var(--pop-coral, #ff6a3d);
+}
+
+/* ---------- input bar ---------- */
+#brand-concierge-mount .input-container {
+  border: var(--bc-border);
+  border-radius: 0;
+  box-shadow: var(--bc-shadow);
+  background-color: var(--paper, #fff);
+}
+
+#brand-concierge-mount .chat-input {
+  font-family: var(--body-font-family, sans-serif);
+  color: var(--ink, #0b0b0b);
+}
+
+#brand-concierge-mount .submit-button {
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  background-color: var(--ink, #0b0b0b);
+  color: var(--paper, #fff);
+  transition: var(--bc-press);
+}
+
+#brand-concierge-mount .submit-button .send-icon {
+  fill: currentcolor;
+}
+
+#brand-concierge-mount .submit-button:not([aria-disabled="true"]):hover {
+  transform: translate(-1px, -1px);
+  background-color: var(--pop-yellow, #ffd400);
+  color: var(--ink, #0b0b0b);
+}
+
+#brand-concierge-mount .submit-button[aria-disabled="true"] {
+  background-color: var(--light-color, #f3f1ea);
+  color: var(--muted-color, #6b6b6b);
+}
+
+/* ---------- scroll-to-bottom pill ---------- */
+#brand-concierge-mount .scroll-to-bottom {
+  border: var(--bc-border-thin);
+  border-radius: 0;
+  box-shadow: var(--bc-shadow-sm);
+  background-color: var(--pop-yellow, #ffd400);
+  color: var(--ink, #0b0b0b);
+  transition: var(--bc-press);
+}
+
+#brand-concierge-mount .scroll-to-bottom:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--ink, #0b0b0b);
+  background-color: var(--pop-lime, #b6ff2e);
+}
+
+/* ---------- tooltips ---------- */
+#brand-concierge-mount .bc-tooltip {
+  border-radius: 0;
+  background-color: var(--ink, #0b0b0b);
+  color: var(--paper, #fff);
+  font-family: var(--heading-font-family, sans-serif);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ---------- disclaimer ---------- */
+#brand-concierge-mount .disclaimer-text {
+  color: var(--ink, #0b0b0b);
+}
+
+#brand-concierge-mount .disclaimer-link {
+  color: var(--link-color, #2f5cff);
+  text-decoration-color: var(--pop-yellow, #ffd400);
+}

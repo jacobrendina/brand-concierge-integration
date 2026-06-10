@@ -8,6 +8,7 @@
  * DOM and simply toggle visibility, preserving the conversation across re-opens.
  */
 
+import { loadCSS } from './aem.js';
 import initConciergeSockLoader from './concierge-sock-loader.js';
 
 const MOUNT_ID = 'brand-concierge-mount';
@@ -45,10 +46,18 @@ function whenConciergeReady(timeout = 15000) {
  * the agent. Subsequent callers receive the same element back without
  * re-bootstrapping, so a page should only host a single integration at a time.
  *
+ * The `styleConfiguration` from styleconfigurations.js is always passed to the
+ * agent. Our extra neo-brutalist re-skin and the sock loading animation are
+ * opt-out via `customStyling` so the inline block can render the agent in its
+ * unembellished, default styling.
+ *
  * @param {Element} container element that should host the agent
+ * @param {object} [options] mount options
+ * @param {boolean} [options.customStyling=true] apply the site theme overrides
+ *   and the sock loading animation
  * @returns {Promise<Element>} the mount element
  */
-export default async function mountBrandConcierge(container) {
+export default async function mountBrandConcierge(container, { customStyling = true } = {}) {
   if (mountEl) {
     return mountEl;
   }
@@ -57,8 +66,13 @@ export default async function mountBrandConcierge(container) {
   mountEl.id = MOUNT_ID;
   container.append(mountEl);
 
-  // Replace Brand Concierge's loading dots with a fun sock animation.
-  initConciergeSockLoader(mountEl);
+  if (customStyling) {
+    // Re-skin Brand Concierge to match the site's neo-brutalist theme.
+    loadCSS(`${window.hlx.codeBasePath}/styles/brand-concierge-theme.css`);
+
+    // Replace Brand Concierge's loading dots with a fun sock animation.
+    initConciergeSockLoader(mountEl);
+  }
 
   const ready = await whenConciergeReady();
   if (ready && !bootstrapped) {

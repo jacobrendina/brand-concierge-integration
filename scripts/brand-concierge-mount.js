@@ -8,6 +8,8 @@
  * DOM and simply toggle visibility, preserving the conversation across re-opens.
  */
 
+import initConciergeSockLoader from './concierge-sock-loader.js';
+
 const MOUNT_ID = 'brand-concierge-mount';
 let mountEl = null;
 let bootstrapped = false;
@@ -54,6 +56,9 @@ export default async function mountBrandConcierge(container) {
   mountEl = document.createElement('div');
   mountEl.id = MOUNT_ID;
   container.append(mountEl);
+
+  // Replace Brand Concierge's loading dots with a fun sock animation.
+  initConciergeSockLoader(mountEl);
 
   const ready = await whenConciergeReady();
   if (ready && !bootstrapped) {

@@ -11,7 +11,7 @@ import mountBrandConcierge from './brand-concierge-mount.js';
  */
 
 const LAUNCHER_LABEL = 'Chat with our agent';
-const TITLE = 'Brand Concierge';
+const TITLE = 'Ask Sock2U';
 
 let initialised = false;
 

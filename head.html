@@ -28,10 +28,10 @@
 <script nonce="aem">
   alloy("configure", {
     defaultConsent: "in",
-    edgeDomain: "edge.adobedc.net",
+    edgeDomain: "edge-int.adobedc.net",
     edgeBasePath: "ee",
-    datastreamId: "5c6a3988-e161-42bb-ad56-7c2742304d93",
-    orgId: "09CF60665F98CEF90A495FF8@AdobeOrg",
+    datastreamId: "857bbff2-dd43-44ea-a8b1-f3b6d3bb2ccc",
+    orgId: "0F211E64690BA86B0A494136@AdobeOrg",
     debugEnabled: true,
     idMigrationEnabled: false,
     thirdPartyCookiesEnabled: false,
@@ -39,20 +39,4 @@
   });
 
   alloy("sendEvent", {});
-</script>
-
-
-<script nonce="aem">
-  (function waitForBrandConciergeMount() {
-    if (document.getElementById('brand-concierge-mount')) {
-      window.adobe.concierge.bootstrap({
-        instanceName: "alloy",
-        stylingConfigurations: window.styleConfiguration,
-        selector: "#brand-concierge-mount",
-        stickySession: false
-      });
-    } else {
-      setTimeout(waitForBrandConciergeMount, 50);
-    }
-  })();
 </script>
